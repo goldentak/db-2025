@@ -1,6 +1,6 @@
 # Lab Work 2
 
-![Struct Diagram](media/pgAdminERD.png)
+![Struct Diagram](../media/pgAdminERD.png)
 
 ### SQL Commands to Create the Database and Tables
 
