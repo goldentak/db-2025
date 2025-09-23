@@ -1,24 +1,25 @@
 # Lab work 1.
-###  Part 1.
+
+### Part 1.
+
 1. Write description of the project;
 
 2. Identify all entities, attributes, relationships and cardinality ratios of your project;
-If any many-to-many relationship exists in your E/R diagram, split it into two one-to-many relationships. If there is any one-to-one relationship in your E/R diagram, consider merging the two entities involved into a single one;
+   If any many-to-many relationship exists in your E/R diagram, split it into two one-to-many relationships. If there is any one-to-one relationship in your E/R diagram, consider merging the two entities involved into a single one;
 
 3. Draw ER diagram with requered tools ( ERDPlus, Draw.io, DB Fiddle).
 
-
 ## My Solution
 
-![Struct Diagram](media/struct.png)
+![Struct Diagram](../media/struct.png)
 
 # Lab Work 1 — Parts 1 & 2 (Banking Information System)
 
 ## Part 1 — Project Description (Concise)
 
-* **Goal.** Store core banking data: customers, accounts, transactions, cards, loans, deposits, and an append-only audit trail.
-* **Scope/assumptions.** Single currency (USD). Balance lives on **accounts**; all money movement is an atomic **transaction** with `from_account_id` and `to_account_id`. **Loans/Deposits** are products attached to an account; repayments/payouts are recorded as transactions. **Audit logs** capture who/what/when. No remaining M\:N or 1:1 relations.
-* **Key constraints.** Unique `users.email`; required FKs; `sum > 0` and `from_account_id ≠ to_account_id`; parent deletes restricted; timestamps on core rows; index PKs/FKs and frequently searched columns (`email`, `account_id`, `created_at`).
+- **Goal.** Store core banking data: customers, accounts, transactions, cards, loans, deposits, and an append-only audit trail.
+- **Scope/assumptions.** Single currency (USD). Balance lives on **accounts**; all money movement is an atomic **transaction** with `from_account_id` and `to_account_id`. **Loans/Deposits** are products attached to an account; repayments/payouts are recorded as transactions. **Audit logs** capture who/what/when. No remaining M\:N or 1:1 relations.
+- **Key constraints.** Unique `users.email`; required FKs; `sum > 0` and `from_account_id ≠ to_account_id`; parent deletes restricted; timestamps on core rows; index PKs/FKs and frequently searched columns (`email`, `account_id`, `created_at`).
 
 ## Part 2 — Entities, Attributes, Relationships & Cardinalities
 
@@ -36,19 +37,15 @@ If any many-to-many relationship exists in your E/R diagram, split it into two o
 
 ### Relationships & Cardinality
 
-* **User (1) — (0..N) Account**
-* **Account (1) — (0..N) Transaction** (via `from_account_id` and via `to_account_id`)
-* **Account (1) — (0..N) Card / Loan / Deposit**
-* **User (1) — (0..N) AuditLog**
+- **User (1) — (0..N) Account**
+- **Account (1) — (0..N) Transaction** (via `from_account_id` and via `to_account_id`)
+- **Account (1) — (0..N) Card / Loan / Deposit**
+- **User (1) — (0..N) AuditLog**
 
-*Notes:* No M\:N remains (transfers are two FKs in `transactions`). No 1:1 needed. Optionality shown by `0..N` on child sides.
-
-
-
-
-
+_Notes:_ No M\:N remains (transfers are two FKs in `transactions`). No 1:1 needed. Optionality shown by `0..N` on child sides.
 
 ### 3. ER diagram (executable on dbdiagram.io)
+
 ```
 // Users
 Table users {
