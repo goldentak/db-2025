@@ -153,5 +153,6 @@ Replace `path_to_your_sql_file.sql` with the path to your `.sql` file containing
 
 ## Screenshots
 
-![#](#)
+![log1](../media/log1.png)
+![log1](../media/log2.png)
 
